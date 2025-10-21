@@ -34,7 +34,7 @@ impl Db {
             .use_keyspace(keyspace, true)
             .connection_timeout(duration.unwrap_or(DEFAULT_TIMEOUT))
             .build()
-            .await?;
+            .await.map_err(|e| crate::errors::DbError::InvalidUri(e))?;
 
         Self::new(connection).await
     }

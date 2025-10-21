@@ -7,7 +7,4 @@ pub(crate) struct AppState {
     db: db::client::Db
 }
 
-
-lazy_static::lazy_static! {
-    static ref SUCCESS_RESPONSE: serde_json::Value = serde_json::json!({ "success": true });
-}
+pub(crate) const USER_ID_KEY: &str = "user_id";

@@ -12,4 +12,6 @@ pub enum DbError {
     QueryError(String),
     #[error("Execution error: {0}")]
     ExecutionError(#[from] scylla::errors::ExecutionError),
+    #[error("Internal error: {0}")]
+    InternalError(#[from] eyre::Report),
 }
